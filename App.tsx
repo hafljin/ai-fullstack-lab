@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Layout } from './components/Layout';
+import { CourseKotlin } from './pages/CourseKotlin';
 import { Dashboard } from './pages/Dashboard';
 import { TopicView } from './pages/TopicView';
 import { PracticeView } from './pages/PracticeView';
@@ -59,6 +60,7 @@ const App: React.FC = () => {
           <Layout>
             <Routes>
               <Route path="/" element={<Dashboard />} />
+              <Route path="/course/kotlin" element={<CourseKotlin />} />
               <Route path="/topic/:id/read" element={<TopicView />} />
               <Route path="/topic/:id/practice" element={<PracticeView />} />
               <Route path="*" element={<Navigate to="/" replace />} />

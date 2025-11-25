@@ -12,7 +12,18 @@ export const Dashboard: React.FC = () => {
   const { language } = useLanguage();
   const t = useTranslation(language);
   
-  const categories = Object.values(TopicCategory);
+  // ホーム画面はジャンルとコースのみ表示
+  const genre = {
+    key: 'mobile-dev',
+    label: language === 'ja' ? 'モバイル開発スキル獲得' : 'Mobile Development Skills',
+    courses: [
+      {
+        key: TopicCategory.MOBILE_KOTLIN,
+        label: language === 'ja' ? 'Kotlinコース' : 'Kotlin Course',
+        to: '/course/kotlin'
+      }
+    ]
+  };
 
   const getCategoryTopics = (cat: TopicCategory) => TOPICS.filter(t => t.category === cat);
 
@@ -79,19 +90,23 @@ export const Dashboard: React.FC = () => {
         </div>
       </div>
 
-      {categories.map(cat => (
-        <div key={cat}>
-          <h3 className="text-lg font-bold text-slate-800 mb-4 flex items-center">
-            {cat}
-            <span className="ml-2 text-xs font-normal text-slate-400">({getCategoryTopics(cat).length} {t('lessons')})</span>
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
-            {getCategoryTopics(cat).map(topic => (
-              <TopicCard key={topic.id} topic={topic} />
-            ))}
-          </div>
+      <section key={genre.key} className="mb-10">
+        <h2 className="text-xl md:text-2xl font-bold text-blue-700 mb-6 border-b border-blue-200 pb-2">{genre.label}</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {genre.courses.map(course => (
+            <Link
+              key={course.key}
+              to={course.to}
+              className="block bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md transition-all p-6 hover:bg-blue-50"
+            >
+              <h3 className="text-lg font-bold text-slate-800 mb-2 flex items-center">
+                {course.label}
+              </h3>
+              <span className="text-xs font-normal text-slate-400">{getCategoryTopics(course.key).length} {t('lessons')}</span>
+            </Link>
+          ))}
         </div>
-      ))}
+      </section>
     </div>
   );
 };

@@ -4,7 +4,7 @@ export interface UserProgress {
 }
 
 export enum TopicCategory {
-  KOTLIN = 'Kotlin Fundamentals',
+  MOBILE_KOTLIN = 'Kotlin (モバイル開発)',
   CS_BASICS = 'Computer Science Basics'
 }
 

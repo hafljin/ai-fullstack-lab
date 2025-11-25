@@ -6,7 +6,7 @@ const TOPICS_BASE: Topic[] = [
   {
     id: 'kotlin-basics-1',
     title: '1. App Data & Variables',
-    category: TopicCategory.KOTLIN,
+    category: TopicCategory.MOBILE_KOTLIN,
     difficulty: 'Beginner',
     description: 'Start your journey by learning how apps store data. Understand val vs var and basic types.',
     contentMarkdown: `
@@ -60,7 +60,7 @@ val isPremium: Boolean = false
   {
     id: 'kotlin-control-flow',
     title: '2. Logic & Decision Making',
-    category: TopicCategory.KOTLIN,
+    category: TopicCategory.MOBILE_KOTLIN,
     difficulty: 'Beginner',
     description: 'Apps need to make decisions. Learn if/else and when expressions to control logic.',
     contentMarkdown: `
@@ -105,7 +105,7 @@ val message = when (statusCode) {
   {
     id: 'kotlin-functions-nulls',
     title: '3. Functions & Null Safety',
-    category: TopicCategory.KOTLIN,
+    category: TopicCategory.MOBILE_KOTLIN,
     difficulty: 'Intermediate',
     description: 'Learn to structure code with functions and handle missing data safely (The Billion Dollar Mistake fixed).',
     contentMarkdown: `
@@ -156,7 +156,7 @@ fun getUsernameLength(name: String?): Int {
   {
     id: 'kotlin-oop-classes',
     title: '4. Modeling Data (Classes)',
-    category: TopicCategory.KOTLIN,
+    category: TopicCategory.MOBILE_KOTLIN,
     difficulty: 'Intermediate',
     description: 'Real apps manage real objects. Learn Classes and the powerful `data class`.',
     contentMarkdown: `
@@ -208,7 +208,7 @@ fun main() {
   {
     id: 'kotlin-collections',
     title: '5. Collections & Lambdas',
-    category: TopicCategory.KOTLIN,
+    category: TopicCategory.MOBILE_KOTLIN,
     difficulty: 'Advanced',
     description: 'Manage lists of data. Learn functional programming (filter, map) to process data efficiently.',
     contentMarkdown: `
@@ -258,7 +258,7 @@ fun main() {
   {
     id: 'kotlin-error-handling',
     title: '6. Error Handling',
-    category: TopicCategory.KOTLIN,
+    category: TopicCategory.MOBILE_KOTLIN,
     difficulty: 'Intermediate',
     description: 'Handle errors gracefully. Learn try-catch-finally and create custom exceptions.',
     contentMarkdown: `
@@ -323,7 +323,7 @@ fun divideNumbers(a: Int, b: Int?): String {
   {
     id: 'kotlin-scope-functions',
     title: '7. Kotlin Scope Functions',
-    category: TopicCategory.KOTLIN,
+    category: TopicCategory.MOBILE_KOTLIN,
     difficulty: 'Intermediate',
     description: 'Write cleaner code with let, apply, also, run, and with. Plus extension functions!',
     contentMarkdown: `
@@ -407,7 +407,7 @@ fun main() {
   {
     id: 'kotlin-advanced-oop',
     title: '8. Advanced OOP Patterns',
-    category: TopicCategory.KOTLIN,
+    category: TopicCategory.MOBILE_KOTLIN,
     difficulty: 'Advanced',
     description: 'Master sealed classes, enums, objects, and companion objects for production-ready code.',
     contentMarkdown: `
@@ -491,7 +491,7 @@ fun main() {
   {
     id: 'kotlin-collections-advanced',
     title: '9. Advanced Collections',
-    category: TopicCategory.KOTLIN,
+    category: TopicCategory.MOBILE_KOTLIN,
     difficulty: 'Advanced',
     description: 'Master groupBy, partition, flatMap, and Sequences for performance.',
     contentMarkdown: `
@@ -566,7 +566,7 @@ fun main() {
   {
     id: 'kotlin-generics',
     title: '10. Generics & Type Safety',
-    category: TopicCategory.KOTLIN,
+    category: TopicCategory.MOBILE_KOTLIN,
     difficulty: 'Advanced',
     description: 'Write reusable, type-safe code with generics. Understand in/out variance.',
     contentMarkdown: `
@@ -638,7 +638,7 @@ fun main() {
   {
     id: 'kotlin-coroutines-basics',
     title: '11. Async Programming (Coroutines)',
-    category: TopicCategory.KOTLIN,
+    category: TopicCategory.MOBILE_KOTLIN,
     difficulty: 'Advanced',
     description: 'Handle async operations without blocking. Learn suspend, launch, and async.',
     contentMarkdown: `
@@ -720,7 +720,7 @@ fun main() = runBlocking {
   {
     id: 'kotlin-file-io',
     title: '12. File Operations',
-    category: TopicCategory.KOTLIN,
+    category: TopicCategory.MOBILE_KOTLIN,
     difficulty: 'Intermediate',
     description: 'Read and write files. Essential for data persistence and configuration.',
     contentMarkdown: `
@@ -783,7 +783,7 @@ fun main() {
   {
     id: 'kotlin-mini-project',
     title: '13. Mini Project: Task Manager CLI',
-    category: TopicCategory.KOTLIN,
+    category: TopicCategory.MOBILE_KOTLIN,
     difficulty: 'Advanced',
     description: 'Build a complete CLI task manager using everything learned so far.',
     contentMarkdown: `
