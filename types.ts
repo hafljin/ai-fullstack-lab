@@ -24,3 +24,44 @@ export interface Topic {
   expectedOutputDescription: string; // Used for simple checks or AI prompting
   expectedOutputDescriptionJa?: string; // Japanese expected output
 }
+
+// Code Reading Types
+export type CodeReadingLanguage = 'JavaScript' | 'TypeScript' | 'Python' | 'Kotlin' | 'Java' | 'Go';
+
+export type ExperienceLevel = 'beginner' | 'intermediate' | 'advanced';
+
+export interface CodeReadingProblem {
+  id: string;
+  language: CodeReadingLanguage;
+  level: ExperienceLevel;
+  code: string;
+  question: string;
+  questionJa?: string;
+  correctExplanation: string;
+  correctExplanationJa?: string;
+}
+
+export interface CodeReadingAnswer {
+  problemId: string;
+  userAnswer: string;
+  score: number; // 0-100
+  isCorrect: boolean; // score >= 80
+  feedback: string;
+}
+
+export interface CodeReadingSession {
+  language: CodeReadingLanguage;
+  level: ExperienceLevel;
+  problems: CodeReadingProblem[];
+  answers: CodeReadingAnswer[];
+  currentIndex: number;
+  completed: boolean;
+  totalScore: number;
+}
+
+export interface CodeReadingProgress {
+  weakProblems: CodeReadingProblem[]; // Problems with score < 80 for review
+  completedSessions: number;
+  totalProblemsAttempted: number;
+  averageScore: number;
+}
