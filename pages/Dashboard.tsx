@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Book, Code, CheckCircle, Circle, ChevronRight, BookOpen } from 'lucide-react';
+import { Book, Code, CheckCircle, ChevronRight, BookOpen } from 'lucide-react';
 import { TOPICS } from '../constants';
 import { Topic, TopicCategory, CodeReadingProgress } from '../types';
 import { useAppContext } from '../App';
