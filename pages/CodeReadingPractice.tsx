@@ -83,9 +83,13 @@ export const CodeReadingPractice: React.FC = () => {
     const nextIndex = currentIndex + 1;
     
     if (nextIndex >= TOTAL_PROBLEMS) {
-      // Session complete
-      const totalScore = answers.reduce((sum, a) => sum + a.score, 0);
-      updateSessionStats(answers.length, totalScore);
+      // Session complete - use currentFeedback to ensure the last answer is included
+      // since React state updates may not have completed yet
+      const currentScore = currentFeedback?.score || 0;
+      const previousAnswersScore = answers.slice(0, -1).reduce((sum, a) => sum + a.score, 0);
+      const totalScore = previousAnswersScore + currentScore;
+      const totalProblems = answers.length > 0 ? answers.length : TOTAL_PROBLEMS;
+      updateSessionStats(totalProblems, totalScore);
       setSessionComplete(true);
     } else {
       setCurrentIndex(nextIndex);

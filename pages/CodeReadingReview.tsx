@@ -53,13 +53,16 @@ export const CodeReadingReview: React.FC = () => {
     setCurrentFeedback(null);
     setUserAnswer('');
     
+    // Check if we have more problems to review
+    // Note: weakProblems may have been reduced if last answer was correct
+    if (weakProblems.length === 0) {
+      navigate('/code-reading');
+      return;
+    }
+    
+    // If current index is beyond available problems, wrap to start
     if (currentIndex >= weakProblems.length - 1) {
-      // If we removed the last problem, go back to setup
-      if (weakProblems.length <= 1) {
-        navigate('/code-reading');
-      } else {
-        setCurrentIndex(0);
-      }
+      setCurrentIndex(0);
     } else {
       setCurrentIndex(prev => prev + 1);
     }

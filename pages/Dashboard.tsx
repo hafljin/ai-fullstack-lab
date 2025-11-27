@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Book, Code, CheckCircle, Circle, ChevronRight, BookOpen } from 'lucide-react';
 import { TOPICS } from '../constants';
-import { Topic, TopicCategory } from '../types';
+import { Topic, TopicCategory, CodeReadingProgress } from '../types';
 import { useAppContext } from '../App';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTranslation } from '../locales';
@@ -12,7 +12,16 @@ export const Dashboard: React.FC = () => {
   const { progress } = useAppContext();
   const { language } = useLanguage();
   const t = useTranslation(language);
-  const codeReadingProgress = getCodeReadingProgress();
+  const [codeReadingProgress, setCodeReadingProgress] = useState<CodeReadingProgress>({
+    weakProblems: [],
+    completedSessions: 0,
+    totalProblemsAttempted: 0,
+    averageScore: 0,
+  });
+
+  useEffect(() => {
+    setCodeReadingProgress(getCodeReadingProgress());
+  }, []);
   
   // ホーム画面はジャンルとコースのみ表示
   const genre = {
