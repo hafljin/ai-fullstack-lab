@@ -37,7 +37,7 @@ val username: String = "DevUser"
 val isPremium: Boolean = false
 \`\`\`
     `,
-    practicePrompt: "`appName`という`val`と、`unreadMessages`という`var`（初期値5）を定義してください。それらを出力してから、2通のメッセージを読んだとして`unreadMessages`を2減らし、新しい値を出力してください。",
+    practicePrompt: "1. 名前を入れる箱 appName を作って「Taro」を入れよう（valで作る）\n2. メッセージの数 unreadMessages を作って「5」を入れよう（varで作る）\n3. appName と unreadMessages を println で出力しよう\n4. unreadMessages から2ひいて、新しい数字を println で出力しよう",
     expectedOutputDescription: "アプリ名と、更新されるメッセージ数を表示する出力。"
   },
   
