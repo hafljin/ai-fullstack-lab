@@ -44,7 +44,7 @@ export const TOPICS: Topic[] = [
       descriptionJa: 'アプリは判断を下す必要があります。if/elseとwhen式を学んでロジックを制御しましょう。',
       contentMarkdown: `Kotlin control flow: if, when, and logic.`,
       contentMarkdownJa: `# 判断を下す\n\nアプリは静的ではありません。データに反応します。ユーザーがログインしていればダッシュボードを表示し、そうでなければログイン画面を表示します。\n\n### \`if\` 式\nKotlinでは、\`if\`は値を返します。状態を割り当てるのに最適です。\n\n\`\`\`kotlin\nval buttonColor = if (isValid) "Green" else "Red"\n\`\`\`\n\n### \`when\` 式\n複数の可能性をチェックする場合（HTTPステータスコードやメニューオプションの処理など）は\`when\`を使います。多数のif-else文よりもクリーンです。\n\n\`\`\`kotlin\nval message = when (statusCode) {\n    200 -> "成功"\n    404 -> "見つかりません"\n    500 -> "サーバーエラー"\n    else -> "不明"\n}\n\`\`\``,
-      examples: [
+    examples: [
         {
           code: 'val score = 75\nval result = if (score >= 60) "Pass" else "Fail"\nprintln(result)',
           output: 'Pass',
@@ -681,8 +681,8 @@ export const TOPICS: Topic[] = [
     practicePromptJa: "ジェネリックなRepository<T>クラスを作成し、add, getAll, findByIdメソッドを実装してください。Productデータクラスでテストしましょう。",
     expectedOutputDescription: '[Product(id=1, name=Pen), Product(id=2, name=Book)]\nProduct(id=2, name=Book)',
     expectedOutputDescriptionJa: "ProductリストとID検索の結果が出力される。"
-    ,
-    examples: [
+  ,
+  examples: [
         {
           code: 'class Box<T>(val value: T)\nval intBox = Box(123)\nval strBox = Box("abc")\nprintln(intBox.value)\nprintln(strBox.value)',
           output: '123\nabc',
