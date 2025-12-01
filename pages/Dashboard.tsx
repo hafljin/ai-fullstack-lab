@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Book, Code, CheckCircle, Circle, ChevronRight } from 'lucide-react';
+import { Book, Code, CheckCircle, ChevronRight, BookOpen } from 'lucide-react';
 import { TOPICS } from '../constants';
-import { Topic, TopicCategory } from '../types';
+import { Topic, TopicCategory, CodeReadingProgress } from '../types';
 import { useAppContext } from '../App';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTranslation } from '../locales';
+import { getCodeReadingProgress } from '../services/codeReadingStorageService';
 
 export const Dashboard: React.FC = () => {
   const { progress } = useAppContext();
   const { language } = useLanguage();
   const t = useTranslation(language);
+  const [codeReadingProgress, setCodeReadingProgress] = useState<CodeReadingProgress>({
+    weakProblems: [],
+    completedSessions: 0,
+    totalProblemsAttempted: 0,
+    averageScore: 0,
+  });
+
+  useEffect(() => {
+    setCodeReadingProgress(getCodeReadingProgress());
+  }, []);
   
   // ホーム画面はジャンルとコースのみ表示
   const genre = {
@@ -89,6 +100,51 @@ export const Dashboard: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Code Reading Enhancement Section */}
+      <section className="mb-10">
+        <h2 className="text-xl md:text-2xl font-bold text-emerald-700 mb-6 border-b border-emerald-200 pb-2">
+          {language === 'ja' ? 'スキル強化' : 'Skill Enhancement'}
+        </h2>
+        <Link
+          to="/code-reading"
+          className="block bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-xl shadow-sm hover:shadow-md transition-all p-6 hover:from-emerald-100 hover:to-teal-100"
+        >
+          <div className="flex items-start gap-4">
+            <div className="bg-emerald-500 text-white p-3 rounded-xl">
+              <BookOpen size={28} />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-lg font-bold text-slate-800 mb-1">{t('codeReadingTitle')}</h3>
+              <p className="text-sm text-slate-600 mb-3">{t('codeReadingDesc')}</p>
+              <div className="flex flex-wrap gap-2 text-xs">
+                {codeReadingProgress.completedSessions > 0 && (
+                  <span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">
+                    {language === 'ja' 
+                      ? `${codeReadingProgress.completedSessions}セッション完了` 
+                      : `${codeReadingProgress.completedSessions} sessions completed`}
+                  </span>
+                )}
+                {codeReadingProgress.weakProblems.length > 0 && (
+                  <span className="bg-amber-100 text-amber-700 px-2 py-1 rounded-full">
+                    {language === 'ja' 
+                      ? `${codeReadingProgress.weakProblems.length}問の復習待ち` 
+                      : `${codeReadingProgress.weakProblems.length} problems to review`}
+                  </span>
+                )}
+                {codeReadingProgress.averageScore > 0 && (
+                  <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full">
+                    {language === 'ja' 
+                      ? `平均スコア: ${Math.round(codeReadingProgress.averageScore)}%` 
+                      : `Avg. Score: ${Math.round(codeReadingProgress.averageScore)}%`}
+                  </span>
+                )}
+              </div>
+            </div>
+            <ChevronRight size={24} className="text-emerald-600 self-center" />
+          </div>
+        </Link>
+      </section>
 
       <section key={genre.key} className="mb-10">
         <h2 className="text-xl md:text-2xl font-bold text-blue-700 mb-6 border-b border-blue-200 pb-2">{genre.label}</h2>

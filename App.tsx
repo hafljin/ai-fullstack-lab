@@ -5,6 +5,9 @@ import { CourseKotlin } from './pages/CourseKotlin';
 import { Dashboard } from './pages/Dashboard';
 import { TopicView } from './pages/TopicView';
 import { PracticeView } from './pages/PracticeView';
+import { CodeReadingSetup } from './pages/CodeReadingSetup';
+import { CodeReadingPractice } from './pages/CodeReadingPractice';
+import { CodeReadingReview } from './pages/CodeReadingReview';
 import { UserProgress } from './types';
 import { getProgress, saveProgress } from './services/storageService';
 import { LanguageProvider } from './contexts/LanguageContext';
@@ -63,6 +66,9 @@ const App: React.FC = () => {
               <Route path="/course/kotlin" element={<CourseKotlin />} />
               <Route path="/topic/:id/read" element={<TopicView />} />
               <Route path="/topic/:id/practice" element={<PracticeView />} />
+              <Route path="/code-reading" element={<CodeReadingSetup />} />
+              <Route path="/code-reading/practice" element={<CodeReadingPractice />} />
+              <Route path="/code-reading/review" element={<CodeReadingReview />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </Layout>
